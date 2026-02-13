@@ -20,6 +20,7 @@ export default function Home() {
   const emailTextRef = useRef<HTMLParagraphElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const animationStartTime = useRef<number>(0);
 
   // Sample carousel data
   const carouselItems = [
@@ -52,6 +53,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true);
+    animationStartTime.current = Date.now();
   }, []);
 
   useEffect(() => {
@@ -240,8 +242,9 @@ export default function Home() {
           const focusIntensity = 1 - (distance / maxDistance);
           
           // Particle-like movement with random offset
-          const randomOffsetX = Math.sin(Date.now() * 0.001) * 8;
-          const randomOffsetY = Math.cos(Date.now() * 0.001) * 8;
+          const elapsed = Date.now() - animationStartTime.current;
+          const randomOffsetX = Math.sin(elapsed * 0.001) * 8;
+          const randomOffsetY = Math.cos(elapsed * 0.001) * 8;
           
           gsap.to(pinkRef.current, {
             x: ((mouseX - centerX) * 0.15) + randomOffsetX,
@@ -312,8 +315,9 @@ export default function Home() {
           const focusIntensity = 1 - (distance / maxDistance);
           
           // Particle-like movement with random offset
-          const randomOffsetX = Math.cos(Date.now() * 0.0012) * 10;
-          const randomOffsetY = Math.sin(Date.now() * 0.0012) * 10;
+          const elapsed = Date.now() - animationStartTime.current;
+          const randomOffsetX = Math.cos(elapsed * 0.0012) * 10;
+          const randomOffsetY = Math.sin(elapsed * 0.0012) * 10;
           
           gsap.to(purpleRef.current, {
             x: ((mouseX - centerX) * 0.18) + randomOffsetX,
