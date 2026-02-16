@@ -28,27 +28,27 @@ export default function Home() {
     {
       id: "1",
       imageSrc: "/events/1.png",
-      title: "Teatro al Aire libre",
+      title: "",
     },
     {
       id: "2", 
       imageSrc: "/events/2.png",
-      title: "Concierto Sinfónico",
+      title: "",
     },
     {
       id: "3",
       imageSrc: "/events/3.png",
-      title: "Festival de Jazz en Vivo",
+      title: "",
     },
     {
       id: "4",
       imageSrc: "/events/4.png",
-      title: "Experiencia Cultural",
+      title: "",
     },
     {
       id: "5",
       imageSrc: "/events/5.png",
-      title: "Evento Especial",
+      title: "",
     },
   ];
 
@@ -487,33 +487,87 @@ export default function Home() {
       {/* 3D Creative Carousel - replaces bottom image */}
       <section className="relative z-30 w-full mt-20 flex justify-center">
         <Swiper
-          spaceBetween={60}
-          className="h-[400px] w-full max-w-6xl"
+          spaceBetween={20}
+          className="h-[300px] w-full max-w-6xl sm:h-[350px] md:h-[400px]"
           modules={[EffectCreative]}
           effect="creative"
           loop={true}
           centeredSlides={true}
           initialSlide={2}
-          slidesPerView={2}
+          slidesPerView={1.2}
           onSlideChange={(swiper) => setActiveSlideIndex(swiper.realIndex)}
           creativeEffect={{
             limitProgress: 2,
             next: {
-              translate: ["30%", "40px", 0],
-              rotate: [0, 0, 10],
+              translate: ["20%", "20px", 0],
+              rotate: [0, 0, 5],
               opacity: 1,
-              scale: 0.9,
+              scale: 0.85,
             },
             prev: {
-              translate: ["-30%", "40px", 0],
-              rotate: [0, 0, -10],
+              translate: ["-20%", "20px", 0],
+              rotate: [0, 0, -5],
               opacity: 1,
-              scale: 0.9,
+              scale: 0.85,
             },
           }}
           breakpoints={{
+            640: {
+              slidesPerView: 1.5,
+              spaceBetween: 30,
+              creativeEffect: {
+                limitProgress: 2,
+                next: {
+                  translate: ["25%", "30px", 0],
+                  rotate: [0, 0, 8],
+                  opacity: 1,
+                  scale: 0.88,
+                },
+                prev: {
+                  translate: ["-25%", "30px", 0],
+                  rotate: [0, 0, -8],
+                  opacity: 1,
+                  scale: 0.88,
+                },
+              },
+            },
+            768: {
+              slidesPerView: 1.8,
+              spaceBetween: 40,
+              creativeEffect: {
+                limitProgress: 2,
+                next: {
+                  translate: ["28%", "35px", 0],
+                  rotate: [0, 0, 9],
+                  opacity: 1,
+                  scale: 0.9,
+                },
+                prev: {
+                  translate: ["-28%", "35px", 0],
+                  rotate: [0, 0, -9],
+                  opacity: 1,
+                  scale: 0.9,
+                },
+              },
+            },
             1024: {
               slidesPerView: 2,
+              spaceBetween: 60,
+              creativeEffect: {
+                limitProgress: 2,
+                next: {
+                  translate: ["30%", "40px", 0],
+                  rotate: [0, 0, 10],
+                  opacity: 1,
+                  scale: 0.9,
+                },
+                prev: {
+                  translate: ["-30%", "40px", 0],
+                  rotate: [0, 0, -10],
+                  opacity: 1,
+                  scale: 0.9,
+                },
+              },
             },
           }}
         >
@@ -522,7 +576,7 @@ export default function Home() {
               key={index}
               className="flex justify-center items-center"
             >
-              <div className="w-[400px] h-[500px] rounded-2xl overflow-hidden relative shadow-xl bg-black">
+              <div className="w-[280px] h-[350px] sm:w-[320px] sm:h-[400px] md:w-[360px] md:h-[450px] lg:w-[400px] lg:h-[500px] rounded-2xl overflow-hidden relative shadow-xl bg-black">
                 <img 
                   src={item.imageSrc} 
                   className={`w-full h-full object-cover transition-all duration-500 ${
