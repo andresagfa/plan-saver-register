@@ -353,9 +353,10 @@ export default function Home() {
       <div 
         className="absolute inset-0" 
         style={{
-          background: 'radial-gradient(70.71% 70.71% at 50% 50%, #F94396 0%, rgba(25, 25, 25, 0.00) 70%)',
-          opacity: 0.5,
-          filter: 'blur(64px)',
+          backgroundImage: 'url("/Frame 42.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           zIndex: -1
         }}
       />
