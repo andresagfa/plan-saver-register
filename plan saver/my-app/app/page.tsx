@@ -21,32 +21,33 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const animationStartTime = useRef<number>(0);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(2);
 
   // Sample carousel data
   const carouselItems = [
     {
       id: "1",
-      imageSrc: "/events/0005.webp",
+      imageSrc: "/events/1.png",
       title: "Teatro al Aire libre",
     },
     {
       id: "2", 
-      imageSrc: "/events/0006.webp",
+      imageSrc: "/events/2.png",
       title: "Concierto Sinfónico",
     },
     {
       id: "3",
-      imageSrc: "/events/0007.jpg",
+      imageSrc: "/events/3.png",
       title: "Festival de Jazz en Vivo",
     },
     {
       id: "4",
-      imageSrc: "/events/0004.webp",
+      imageSrc: "/events/4.png",
       title: "Experiencia Cultural",
     },
     {
       id: "5",
-      imageSrc: "/events/0005.webp",
+      imageSrc: "/events/5.png",
       title: "Evento Especial",
     },
   ];
@@ -494,6 +495,7 @@ export default function Home() {
           centeredSlides={true}
           initialSlide={2}
           slidesPerView={2}
+          onSlideChange={(swiper) => setActiveSlideIndex(swiper.realIndex)}
           creativeEffect={{
             limitProgress: 2,
             next: {
@@ -521,7 +523,12 @@ export default function Home() {
               className="flex justify-center items-center"
             >
               <div className="w-[400px] h-[500px] rounded-2xl overflow-hidden relative shadow-xl bg-black">
-                <img src={item.imageSrc} className="w-full h-full object-cover opacity-95" />
+                <img 
+                  src={item.imageSrc} 
+                  className={`w-full h-full object-cover transition-all duration-500 ${
+                    index === activeSlideIndex ? 'opacity-100' : 'opacity-95 grayscale'
+                  }`} 
+                />
                 <div className="absolute top-3 left-3 text-white font-semibold text-sm drop-shadow-xl">
                   {item.title}
                 </div>
